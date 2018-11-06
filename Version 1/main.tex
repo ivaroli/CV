@@ -23,6 +23,12 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[paper=a4,fontsize=11pt]{scrartcl} % KOMA-article class
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ left=20mm,
+ top=20mm,
+}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -35,6 +41,8 @@
 \usepackage{geometry}
 	\textheight=700px                    % Saving trees ;-)
 \usepackage{url}
+\usepackage{graphicx}
+\graphicspath{ {./} }
 
 \frenchspacing              % Better looking spacings after periods
 \pagestyle{empty}           % No pagenumbers/headers/footers
@@ -47,6 +55,14 @@
 	\usefont{OT1}{phv}{b}{n}%		% bch-b-n: CharterBT-Bold font
 	\sectionrule{0pt}{0pt}{-5pt}{3pt}}
 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+}
+
 %%% Macros
 %%% ------------------------------------------------------------
 \newlength{\spacebox}
@@ -54,6 +70,7 @@
 \newcommand{\sepspace}{\vspace*{1em}}		% Vertical space macro
 
 \newcommand{\MyName}[1]{ % Name
+        \includegraphics[width=4cm, height=4cm]{pic.jpg}
 		\Huge \usefont{T1}{phv}{b}{n} \hfill #1
 		\par \normalsize \normalfont}
 		
@@ -84,6 +101,12 @@
 		\noindent\hangindent=2em\hangafter=0 \small #4 % Description
 		\normalsize \par}
 
+\newcommand{\ProjectEntry}[3]{
+		\noindent \textbf{#1} \hfill\newline      % Study
+		\noindent \textit{#2} \par        % School
+		\noindent\hangindent=2em\hangafter=0 \small #3 % Description
+		\normalsize \par}
+
 \newcommand{\WorkEntry}[4]{				  % Same as \EducationEntry
 		\noindent \textbf{#1} \hfill      % Jobname
 		\colorbox{Black}{\color{White}#2} \par  % Duration
@@ -100,7 +123,7 @@
 %		\includegraphics[width=0.15\textwidth]{photo}
 %\end{wrapfigure}
 
-\MyName{Õvar ”li Sigursson}
+\MyName{√çvar √ìli Sigur√∞sson}
 %\MySlogan{Curriculum Vitae}
 
 \sepspace
@@ -112,22 +135,28 @@
 \PersonalEntry{Birth}{August 17, 1997}
 \PersonalEntry{Address}{Laufhagi 12, Selfoss}
 \PersonalEntry{Phone}{(354) 698-3829}
-\PersonalEntry{Mail}{\url{ivartheoli@gmail.com}}
+\PersonalEntry{Mail}{ivartheoli@gmail.com}
+\PersonalEntry{Github}{\href{https://github.com/ivaroliRU}{https://github.com/ivaroliRU} - School}
+\PersonalEntry{Github}{\href{https://github.com/ivaroli}{https://github.com/ivaroli} - Personal}
 
 %%% Education
 %%% ------------------------------------------------------------
 \NewPart{Education}{}
 
-\EducationEntry{BSc. Computer Science}{2017 - On Going}{Reykjavik University}{Still a student at ReykjavÌk University but I am expecting to graduate spring 2020. I am ambitious in my studies and excited to start working in the field.}
+\EducationEntry{BSc. Computer Science}{2017 - On Going}{Reykjavik University}{Still a student at Reykjav√≠k University but I am expecting to graduate spring 2020. I am ambitious in my studies and excited to start working in the field.}
 \sepspace
-\EducationEntry{High School Education}{2013-2017}{FjˆlbrautaskÛli Suurlands}{}
+\EducationEntry{High School Education}{2013-2017}{Fj√∂lbrautask√≥li Su√∞urlands}{}
 \sepspace
 
 %%% projects
 %%% ------------------------------------------------------------
 \NewPart{Projects}{}
 
-\sepspace
+\ProjectEntry{Pris}{https://github.com/ivaroli/Pris}{Aims to let the user search for the best price for any products on the icelandic market. A web app written in javascript with NodeJS as the backend and React for the frontend, there is also a webscraper written in python. The data is stored and easaly searchable in a Elasticsearch database. I was the sole developer.}
+
+\ProjectEntry{TicTacToe}{https://github.com/softwaresquad/TicTacToe}{The main reason for this project was to learn how to write a usable application from the ground up with the techniques I've learned in my studies. For example using a compination of Scrum and Kanban for project management, coding after TDD (test driven development) and creating artifacts such as a design report. The application was a basic web app.}
+
+\clearpage
 
 %%% Work experience
 %%% ------------------------------------------------------------
@@ -135,13 +164,26 @@
 
 {No formal work experience in the software field.}
 
-\EducationEntry{KFC}{2015 - On Going}{Selfoss}{}
-\EducationEntry{¡rborg}{2018 - On Going}{Liveisla.}{}
+\EducationEntry{KFC - Selfossi}{2015 - On Going}{Almenn st√∂rf}{}
+\EducationEntry{√Årborg}{2018 - On Going}{Li√∞veisla}{}
 \EducationEntry{M. B. Verktak}{2013 - 2018}{Sumarstarf}{}
-\EducationEntry{Hamborgarab˙lla TÛmasar}{2013 - 2014}{Almenn stˆrf.}{}
+\EducationEntry{Hamborgarab√∫lla T√≥masar}{2013 - 2014}{Almenn st√∂rf}{}
 
 \sepspace
 
+%%% Recommendations
+%%% ------------------------------------------------------------
+\NewPart{Recommendations}{}
+
+\ProjectEntry{Gu√∞mundur Kr. Ingvarsson}{M.B. Verktak}{}
+\ProjectEntry{Sandra √ìsk P√°lmad√≥ttir}{KFC - Selfossi}{}
+\ProjectEntry{Hannes P√©tursson}{Kennari √≠ HR}{}
+\ProjectEntry{Bj√∂rgvin Birkir Bj√∂rgvinsson}{Kennari √≠ HR}{}
+
+\sepspace
+\par{I'm known for being a very punctual, conscientious and a reliable worker.}
+
+\sepspace
 %%% Skills
 %%% ------------------------------------------------------------
 \NewPart{Skills and interest}{}
@@ -150,17 +192,18 @@
 \SkillsEntry{}{English (fluent)}
 \SkillsEntry{}{Danish (semi fluent)}
 \sepspace
-\SkillsEntry{Programming languages}{C++ - my favorite language.}
+\SkillsEntry{Programming languages}{C++}
 \SkillsEntry{}{C\#}
+\SkillsEntry{}{Java}
 \SkillsEntry{}{JavaScript}
 \SkillsEntry{}{Python}
-\sepspace
+\clearpage
 \SkillsEntry{Technologies}{NodeJS (And other associated frameworks such as Express.js)}
 \SkillsEntry{}{Databases - SQL and also NoSQL (such as ElasticSearch)}
 \SkillsEntry{}{ASP.NET MVC}
 \SkillsEntry{}{React/React Native}
 \sepspace
-{I am quick to adapt to new technologies and languages because of an underlying understanding of how computers carry out instructions and how memory works. I also strive to find new ways of improving myself as a software developer.}
+\par{I am quick to adapt to new technologies and languages because of an underlying understanding of how computers carry out instructions and how memory works. I also strive to find new ways of improving myself as a software developer.}
 %%% References
 %%% ------------------------------------------------------------
 %\NewPart{References}{}
